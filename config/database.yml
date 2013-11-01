@@ -9,7 +9,13 @@
 
 
 # Here are the settings that are common to all environments
-common: &default_settings
+common: 
+  adapter: postgresql
+  encoding: unicode
+  database: db
+  pool: 5
+  username: staseg
+  password: 123321
   # ============================== LICENSE KEY ===============================
 
   # You must specify the license key associated with your New Relic
@@ -188,12 +194,6 @@ common: &default_settings
 
 development:
   <<: *default_settings
-  adapter: postgresql
-  encoding: unicode
-  database: db
-  pool: 5
-  username: staseg
-  password: 123321
   # Turn off communication to New Relic service in development mode (also
   # 'enabled').
   # NOTE: for initial evaluation purposes, you may want to temporarily
@@ -212,12 +212,6 @@ development:
 
 test:
   <<: *default_settings
-  adapter: postgresql
-  encoding: unicode
-  database: db
-  pool: 5
-  username: staseg
-  password: 123321
   # It almost never makes sense to turn on the agent when running
   # unit, functional or integration tests or the like.
   monitor_mode: false
@@ -228,23 +222,12 @@ test:
 # incurring any user-visible performance degradation.
 production:
   <<: *default_settings
-  adapter: postgresql
-  encoding: unicode
-  database: db
-  pool: 5
-  username: staseg
-  password: 123321
+  monitor_mode: true
 
 # Many applications have a staging environment which behaves
 # identically to production. Support for that environment is provided
 # here.  By default, the staging environment has the agent turned on.
 staging:
   <<: *default_settings
-  adapter: postgresql
-  encoding: unicode
-  database: db
-  pool: 5
-  username: staseg
-  password: 123321
   monitor_mode: true
   # app_name: My Application (Staging)
